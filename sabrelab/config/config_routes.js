@@ -7,3 +7,9 @@ var sabre_dev_studio = new SabreDevStudio({
   uri:           'https://api.test.sabre.com'
 });
 var options = {};
+
+function sabreCall(q, res) {
+  sabreDevStudio.get(q, options, function(err, data) {
+    response(res, err, data);
+  });
+}
