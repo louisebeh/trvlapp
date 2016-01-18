@@ -15,6 +15,32 @@
     <span class="fs-title display-block">A travel app built using Sabre, LumX, NodeJS and Angular</span>
   </div>
 
+  <div ng-controller="Main Ctrl">
+    <div class="mt++" flex-container="row" flex-gutter="24">
+    <div flex-item>
+      <lx-select ng-model="info.origin" placeholder="Starting airport" choices="cities" floating-label>
+        <lx-select-selected>
+          {{ $selected.name }} - {{ $selected.code }}
+        </lx-select-selected>
+
+        <lx-select-choices>
+          {{ $choice.name }} - {{ $choice.code }}
+        </lx-select-choices>
+      </lx-select>
+    </div>
+    <div flex-item>
+      <lx-select ng-model="info.maxfare" placeholder="Budget" choices="prices" floating-label>
+        <lx-select-selected>
+          {{ $selected.show }}
+        </lx-select-selected>
+
+        <lx-select-choices>
+          {{ $choice.show }}
+        </lx-select-choices>
+      </lx-select>
+    </div>
+  </div>
+
   <script src="bower_components/jquery/dist/jquery.js"></script>
   <script src="bower_components/velocity/velocity.js"></script>
   <script src="bower_components/moment/min/moment-with-locales.js"></script>
