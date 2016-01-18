@@ -13,3 +13,19 @@ function sabreCall(q, res) {
     response(res, err, data);
   });
 }
+
+function response(res, err, data) {
+  if (err) {
+    res.status(200).send({
+      'status': false,
+      'message': 'Error',
+      'info': err
+    });
+  } else {
+    res.status(200).send({
+      'status': true,
+      'message': 'Success',
+      'info': data
+    });
+  }
+}
