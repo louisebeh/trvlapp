@@ -1,7 +1,9 @@
+'use strict';
+
 var key = require('./keys.js');
 
 var SabreDevStudio = require('sabre-dev-studio');
-var sabre_dev_studio = new SabreDevStudio({
+var sabreDevStudio = new SabreDevStudio({
   client_id:     key.client_id,
   client_secret: key.client_secret,
   uri:           'https://api.test.sabre.com'
@@ -9,7 +11,6 @@ var sabre_dev_studio = new SabreDevStudio({
 var options = {};
 
 module.exports = function(app) {
-
   app.get('/api/v1/cities', function(req,res) {
     sabreCall('/v1/lists/supported/cities', res);
   });
@@ -21,6 +22,7 @@ module.exports = function(app) {
     '&maxfare=' + req.query.maxfare, res);
   });
 };
+
 
 function sabreCall(q, res) {
   sabreDevStudio.get(q, options, function(err, data) {
