@@ -1,5 +1,4 @@
-angular.module('getLostApp', ['lumx']);
-controller('MainCtrl', function($rootScope, $scope, $http){
+angular.module('getLostApp', ['lumx']).controller('MainCtrl', function($rootScope, $scope, $http){
 
   // Get the cities data that I can show in the drop-down
   $http.get().success(function(data){
@@ -18,6 +17,7 @@ controller('MainCtrl', function($rootScope, $scope, $http){
   ];
 
   // Initialize this with what to show when the page is loaded
+    var today = new Date();
     $scope.info = {
       origin: {
         name: 'New York City',
@@ -27,8 +27,8 @@ controller('MainCtrl', function($rootScope, $scope, $http){
         show: '$500',
         value: 500
       },
-      returndate: '2015-05-20',
-      departuredate: '2015-05-15'
+      returndate: today,
+      departuredate: today
     };
 
     // Call the server to get the fares info
