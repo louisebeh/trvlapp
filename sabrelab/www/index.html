@@ -14,45 +14,46 @@
     <span class="fs-display-3 display-block">Get Lost</span>
     <span class="fs-title display-block">A travel app built using Sabre, LumX, NodeJS and Angular</span>
   </div>
-
+  <!-- Main action happens here -->
   <div ng-controller="Main Ctrl">
     <div class="mt++" flex-container="row" flex-gutter="24">
+      <!-- Row for the city selection -->
       <div flex-item>
         <lx-select ng-model="info.origin" placeholder="Starting airport" choices="cities" floating-label>
           <lx-select-selected>
             {{ $selected.name }} - {{ $selected.code }}
           </lx-select-selected>
-
           <lx-select-choices>
             {{ $choice.name }} - {{ $choice.code }}
           </lx-select-choices>
         </lx-select>
       </div>
+      <!-- Row for budget selection -->
       <div flex-item>
         <lx-select ng-model="info.maxfare" placeholder="Budget" choices="prices" floating-label>
           <lx-select-selected>
             {{ $selected.show }}
           </lx-select-selected>
-
           <lx-select-choices>
             {{ $choice.show }}
           </lx-select-choices>
         </lx-select>
       </div>
     </div>
+    <!-- Row for date picker -->
     <div class="mt++" flex-container="row" flex-gutter="24">
       <div flex-item>
         <form>
           <lx-date-picker model="info.departuredate" label="Start date" locale="en" fixed-label="true" icon="calendar"></lx-date-picker>
         </form>
       </div>
-
       <div flex-item>
         <form>
           <lx-date-picker model="info.returndate" label="End date" locale="en" fixed-label="true" icon="calendar"></lx-date-picker>
         </form>
       </div>
     </div>
+    <!-- Submit button -->
     <div class="mt++" flex-container="row" flex-gutter="24">
       <div flex-item>
         <div flex-container="column" flex-align="space-between center">
@@ -60,7 +61,31 @@
         </div>
       </div>
     </div>
+    <!-- Search Results -->
+    <div class="mt++" flex-container="row" flex-gutter="24" flex-wrap ng-show="results">
+      <div ng-show="results.status" class="p++">
+        <div flex-item="6">
+          <span class="fs-title display-block mb">Places you can go...</span>
+          <div class="divider divider--dark"></div>
+          <ul class="list mt++">
+            <div ng-repeat="d in fareinfo | orderBy: 'LowestFare'">
+              <li class="list-row list-row--has-separator">
+                <div class="list-row__content">
+                  <span>{{d.LowestFare}}, {{d.DestinationLocation}}</span>
+                </div>
+              </li>
+            </div>
+          </ul>
+        </div>
+      </div>
+      <div ng-hide="results.status" class="p++">
+        <h2>Error</h2>
+          {{error}}
+      </div>
+    </div>
+  </div>
 
+  <!-- Scripts -->
   <script src="bower_components/jquery/dist/jquery.js"></script>
   <script src="bower_components/velocity/velocity.js"></script>
   <script src="bower_components/moment/min/moment-with-locales.js"></script>
