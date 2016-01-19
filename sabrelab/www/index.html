@@ -17,29 +17,43 @@
 
   <div ng-controller="Main Ctrl">
     <div class="mt++" flex-container="row" flex-gutter="24">
-    <div flex-item>
-      <lx-select ng-model="info.origin" placeholder="Starting airport" choices="cities" floating-label>
-        <lx-select-selected>
-          {{ $selected.name }} - {{ $selected.code }}
-        </lx-select-selected>
+      <div flex-item>
+        <lx-select ng-model="info.origin" placeholder="Starting airport" choices="cities" floating-label>
+          <lx-select-selected>
+            {{ $selected.name }} - {{ $selected.code }}
+          </lx-select-selected>
 
-        <lx-select-choices>
-          {{ $choice.name }} - {{ $choice.code }}
-        </lx-select-choices>
-      </lx-select>
-    </div>
-    <div flex-item>
-      <lx-select ng-model="info.maxfare" placeholder="Budget" choices="prices" floating-label>
-        <lx-select-selected>
-          {{ $selected.show }}
-        </lx-select-selected>
+          <lx-select-choices>
+            {{ $choice.name }} - {{ $choice.code }}
+          </lx-select-choices>
+        </lx-select>
+      </div>
+      <div flex-item>
+        <lx-select ng-model="info.maxfare" placeholder="Budget" choices="prices" floating-label>
+          <lx-select-selected>
+            {{ $selected.show }}
+          </lx-select-selected>
 
-        <lx-select-choices>
-          {{ $choice.show }}
-        </lx-select-choices>
-      </lx-select>
+          <lx-select-choices>
+            {{ $choice.show }}
+          </lx-select-choices>
+        </lx-select>
+      </div>
     </div>
-  </div>
+    <div class="mt++" flex-container="row" flex-gutter="24">
+      <div flex-item>
+        <form>
+          <lx-date-picker model="info.departuredate" label="Start date" locale="en" fixed-label="true" icon="calendar"></lx-date-picker>
+        </form>
+      </div>
+
+      <div flex-item>
+        <form>
+          <lx-date-picker model="info.returndate" label="End date" locale="en" fixed-label="true" icon="calendar"></lx-date-picker>
+        </form>
+      </div>
+    </div>
+
 
   <script src="bower_components/jquery/dist/jquery.js"></script>
   <script src="bower_components/velocity/velocity.js"></script>
